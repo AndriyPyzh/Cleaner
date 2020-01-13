@@ -33,7 +33,7 @@ public class Shop {
         }
     }
 
-    public List selectCleaners(int type) {
+    public List<Cleaner> selectCleaners(int type) {
         switch (type) {
             case 1:
                 return filterClenersoOfType("DishesCleaner");
@@ -47,7 +47,7 @@ public class Shop {
 
     }
 
-    private List filterClenersoOfType(String type) {
+    private List<Cleaner> filterClenersoOfType(String type) {
         List<Cleaner> lst = new LinkedList<>();
         for (Cleaner cleaner : cleaners) {
             if (cleaner.getClass().getSimpleName().equals(type)) {

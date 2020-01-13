@@ -1,8 +1,8 @@
 package com.company.view;
 
 import com.company.controller.*;
-import com.company.model.*;
-import java.lang.reflect.Method;
+import com.company.model.Cleaner;
+
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,19 +30,23 @@ public class View {
 
     private void PressButton1() {
         System.out.format("%-20s %-20s %-20s %-20s\n", "Type", "Name", "Producer", "Price");
-        List lst = controller.getShopProducts();
-        for(Object cleaner:lst){
+        List<Cleaner> lst = controller.getShopProducts();
+        for (Object cleaner : lst) {
             System.out.println(cleaner);
         }
     }
 
     private void PressButton2() {
         System.out.println("input type ( '1' - Dishes, '2' - Floor, '3' - Furniture ): ");
-        int type = input.nextInt();
+        int type = Integer.parseInt(input.nextLine());
         System.out.format("%-20s %-20s %-20s %-20s\n", "Type", "Name", "Producer", "Price");
-        List lst = controller.sortSelectedCleaners(type);
-        for(Object cleaner:lst){
-            System.out.println(cleaner);
+        try {
+            List<Cleaner> lst = controller.sortSelectedCleaners(type);
+            for (Object cleaner : lst) {
+                System.out.println(cleaner);
+            }
+        } catch (Exception e) {
+            System.err.println("Invalid input");
         }
     }
 
@@ -66,6 +70,7 @@ public class View {
             try {
                 methodsMenu.get(keyMenu).print();
             } catch (Exception e) {
+                System.err.println("Invalid input");
             }
         } while (!keyMenu.equals("Q"));
     }

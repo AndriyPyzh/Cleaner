@@ -20,14 +20,13 @@ public class ControllerImpl implements Controller {
     }
 
     @Override
-    public List getShopProducts() {
+    public List<Cleaner> getShopProducts() {
         return shop.getCleaners();
     }
 
     @Override
-    public List sortSelectedCleaners(int type) {
-        List<Cleaner> selected_cleaners = new LinkedList<Cleaner>();
-        selected_cleaners = shop.selectCleaners(type);
+    public List<Cleaner> sortSelectedCleaners(int type) {
+        List<Cleaner> selected_cleaners = shop.selectCleaners(type);
         Collections.sort(selected_cleaners);
         return selected_cleaners;
     }
